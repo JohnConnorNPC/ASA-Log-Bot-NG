@@ -1,0 +1,656 @@
+{
+    "window_title": "ArkAscended",
+    "tolerance": 10,
+    "variance_percent": 10,
+    "click_delay": 1.0,
+    "screenshot_dir": "screenshots/",
+    "server_search": "ok24",
+    "bed_name": "AutoLog",
+    "log_seen_threshold": 4,
+    "game_start_wait": 45,
+    "log_db": "./log.db",
+    "log_images_db": "./log_images.db",
+    "member_db": "./member.db",
+    "log_webhook": "https://discord.com/api/webhooks/big_number/biger_random_string",
+    "members_webhook": "https://discord.com/api/webhooks/big_number/biger_random_string",
+    "server_ip": "5.62.112.77",
+    "server_port": 7781,
+    "discord_enabled": true,
+    "discord_post_interval": 90,
+    "replacements_file": "replacements.json",
+    
+    "states": {
+        "main_menu": {
+            "name": "Main Menu",
+            "detection_pixels": [
+                {
+                    "x": 798,
+                    "y": 865,
+                    "color": [255, 255, 255],
+                    "description": "First white pixel"
+                },
+                {
+                    "x": 1120,
+                    "y": 862,
+                    "color": [255, 255, 255],
+                    "description": "Second white pixel"
+                },
+                {
+                    "x": 933,
+                    "y": 857,
+                    "color": [0, 0, 0],
+                    "description": "Black pixel in center"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_join",
+                    "type": "click",
+                    "x": 933,
+                    "y": 857,
+                    "description": "Click Join button"
+                },
+                {
+                    "name": "wait_after_join",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after click"
+                }
+            ]
+        },
+        
+        "join_game_screen": {
+            "name": "Join Game Screen",
+            "detection_pixels": [
+                {
+                    "x": 341,
+                    "y": 779,
+                    "color": [125, 255, 247],
+                    "description": "First cyan line pixel"
+                },
+                {
+                    "x": 1268,
+                    "y": 774,
+                    "color": [125, 255, 247],
+                    "description": "Second cyan line pixel"
+                },
+                {
+                    "x": 1404,
+                    "y": 767,
+                    "color": [125, 255, 247],
+                    "description": "Third cyan line pixel"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_join_game_card",
+                    "type": "click",
+                    "x": 428,
+                    "y": 630,
+                    "description": "Click JOIN GAME card"
+                },
+                {
+                    "name": "wait_after_join_game",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after click"
+                }
+            ]
+        },
+        
+        "join_game_screen_no_DLC": {
+            "name": "Join Game Screen (No DLC)",
+            "detection_pixels": [
+                {
+                    "x": 1771,
+                    "y": 116,
+                    "color": [255, 255, 255],
+                    "description": "(FFFFFF)"
+                },
+                {
+                    "x": 879,
+                    "y": 717,
+                    "color": [128, 250, 245],
+                    "description": "Cyan pixel (80FAF5)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_join_no_dlc",
+                    "type": "click",
+                    "x": 879,
+                    "y": 717,
+                    "description": "Click at 879,717"
+                },
+                {
+                    "name": "wait_after_click",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after click"
+                }
+            ]
+        },
+        
+        "multiplayer_server": {
+            "name": "Multiplayer Server Screen",
+            "detection_pixels": [
+                {
+                    "x": 688,
+                    "y": 228,
+                    "color": [255, 255, 255],
+                    "description": "White pixel"
+                },
+                {
+                    "x": 98,
+                    "y": 99,
+                    "color": [193, 245, 255],
+                    "description": "Light blue pixel (C1F5FF)"
+                },
+                {
+                    "x": 1758,
+                    "y": 103,
+                    "color": [0, 0, 0],
+                    "description": "Black pixel"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_search_box",
+                    "type": "click",
+                    "x": 1667,
+                    "y": 199,
+                    "clicks": 1,
+                    "description": "Click search box"
+                },
+                {
+                    "name": "wait_after_search_click",
+                    "type": "wait",
+                    "duration": 1,
+                    "description": "Wait 1 second"
+                },
+                {
+                    "name": "select_all",
+                    "type": "hotkey",
+                    "keys": ["ctrl", "a"],
+                    "description": "Select all text"
+                },
+                {
+                    "name": "wait_after_select",
+                    "type": "wait",
+                    "duration": 0.2,
+                    "description": "Wait 0.2 seconds"
+                },
+                {
+                    "name": "clear_text",
+                    "type": "key",
+                    "key": "backspace",
+                    "description": "Clear selected text"
+                },
+                {
+                    "name": "wait_after_clear",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after clear"
+                },
+                {
+                    "name": "type_server_search",
+                    "type": "type",
+                    "text": "{{server_search}}",
+                    "description": "Type server search term"
+                },
+                {
+                    "name": "wait_after_type",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after typing"
+                },
+                {
+                    "name": "wait_for_search",
+                    "type": "wait",
+                    "duration": 3,
+                    "description": "Wait 3 seconds for search"
+                },
+                {
+                    "name": "click_server",
+                    "type": "click",
+                    "x": 1046,
+                    "y": 336,
+                    "clicks": 1,
+                    "description": "Click on server"
+                },
+                {
+                    "name": "wait_after_server_click",
+                    "type": "wait",
+                    "duration": 1,
+                    "description": "Wait 1 second"
+                },
+                {
+                    "name": "click_join",
+                    "type": "click",
+                    "x": 1645,
+                    "y": 944,
+                    "clicks": 1,
+                    "description": "Click join button"
+                },
+                {
+                    "name": "wait_after_join",
+                    "type": "wait",
+                    "duration": 5,
+                    "description": "Wait 5 seconds"
+                }
+            ]
+        },
+        
+        "event_screen": {
+            "name": "Event Screen (Optional)",
+            "detection_pixels": [
+                {
+                    "x": 459,
+                    "y": 933,
+                    "color": [135, 79, 23],
+                    "description": "Brown pixel (874F17)"
+                },
+                {
+                    "x": 273,
+                    "y": 612,
+                    "color": [133, 216, 237],
+                    "description": "Light blue pixel (85D8ED)"
+                },
+                {
+                    "x": 1675,
+                    "y": 238,
+                    "color": [14, 128, 204],
+                    "description": "Blue pixel (0E80CC)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_continue",
+                    "type": "click",
+                    "x": 578,
+                    "y": 929,
+                    "clicks": 1,
+                    "description": "Click continue button"
+                },
+                {
+                    "name": "wait_after_continue",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after click"
+                }
+            ]
+        },
+        
+        "regions_screen": {
+            "name": "Regions Screen (No Tribe)",
+            "detection_pixels": [
+                {
+                    "x": 262,
+                    "y": 150,
+                    "color": [193, 245, 255],
+                    "description": "Light blue pixel (C1F5FF)"
+                },
+                {
+                    "x": 1668,
+                    "y": 97,
+                    "color": [116, 177, 186],
+                    "description": "Blue-gray pixel (74B1BA)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_beds_tab",
+                    "type": "click",
+                    "x": 411,
+                    "y": 152,
+                    "clicks": 1,
+                    "description": "Click on Beds tab"
+                },
+                {
+                    "name": "wait_after_beds_tab",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after click"
+                }
+            ],
+            "next_state": "bed_selection"
+        },
+        
+        "bed_selection": {
+            "name": "Bed Selection Screen",
+            "detection_pixels": [
+                {
+                    "x": 391,
+                    "y": 178,
+                    "color": [255, 255, 255],
+                    "description": "White pixel"
+                },
+                {
+                    "x": 417,
+                    "y": 145,
+                    "color": [193, 245, 255],
+                    "description": "Light blue pixel (C1F5FF)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_search_box",
+                    "type": "click",
+                    "x": 214,
+                    "y": 971,
+                    "clicks": 1,
+                    "description": "Click bed search box"
+                },
+                {
+                    "name": "wait_after_click",
+                    "type": "wait",
+                    "duration": 0.2,
+                    "description": "Wait 0.2 seconds"
+                },
+                {
+                    "name": "select_all",
+                    "type": "hotkey",
+                    "keys": ["ctrl", "a"],
+                    "description": "Select all text"
+                },
+                {
+                    "name": "clear_text",
+                    "type": "key",
+                    "key": "backspace",
+                    "description": "Clear selected text"
+                },
+                {
+                    "name": "wait_after_clear_bed",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after clear"
+                },
+                {
+                    "name": "type_bed_name",
+                    "type": "type",
+                    "text": "{{bed_name}}",
+                    "description": "Type bed name"
+                },
+                {
+                    "name": "wait_after_type_bed",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after typing"
+                },
+				{
+                    "name": "click_selected_bed",
+                    "type": "click",
+                    "x": 383,
+                    "y": 223,
+                    "clicks": 1,
+                    "description": "Click selected bed"
+                },				
+                {
+                    "name": "wait_after_type",
+                    "type": "wait",
+                    "duration": 1,
+                    "description": "Wait 1 second"
+                },
+                {
+                    "name": "click_spawn",
+                    "type": "click",
+                    "x": 1564,
+                    "y": 965,
+                    "clicks": 1,
+                    "description": "Click spawn button"
+                }
+            ]
+        },
+        
+        "create_tribe_screen": {
+            "name": "Create Tribe Screen",
+            "detection_pixels": [
+                {
+                    "x": 817,
+                    "y": 349,
+                    "color": [193, 245, 255],
+                    "description": "Light blue pixel (C1F5FF)"
+                },
+                {
+                    "x": 1072,
+                    "y": 356,
+                    "color": [193, 245, 255],
+                    "description": "Light blue pixel (C1F5FF)"
+                },
+                {
+                    "x": 899,
+                    "y": 86,
+                    "color": [255, 255, 255],
+                    "description": "White pixel"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_create_button",
+                    "type": "click",
+                    "x": 888,
+                    "y": 679,
+                    "clicks": 1,
+                    "description": "Click create tribe button"
+                },
+                {
+                    "name": "wait_after_create",
+                    "type": "wait",
+                    "duration": 1,
+                    "description": "Wait after creating tribe"
+                }
+            ]
+        },
+        
+        "host_connection_timeout": {
+            "name": "Host Connection Timeout",
+            "detection_pixels": [
+                {
+                    "x": 836,
+                    "y": 361,
+                    "color": [188, 238, 249],
+                    "description": "Light blue pixel (BCEEF9)"
+                },
+                {
+                    "x": 1012,
+                    "y": 417,
+                    "color": [191, 243, 255],
+                    "description": "Light blue pixel (BFF3FF)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_ok",
+                    "type": "click",
+                    "x": 959,
+                    "y": 727,
+                    "clicks": 1,
+                    "description": "Click OK button"
+                },
+                {
+                    "name": "wait_after_ok",
+                    "type": "wait",
+                    "duration": 1.0,
+                    "description": "Wait after clicking OK"
+                }
+            ]
+        },
+        
+        "escape_pressed_in_game": {
+            "name": "Escape Pressed In Game",
+            "detection_pixels": [
+                {
+                    "x": 772,
+                    "y": 371,
+                    "color": [21, 160, 192],
+                    "description": "Cyan pixel (15A0C0)"
+                },
+                {
+                    "x": 1310,
+                    "y": 624,
+                    "color": [24, 149, 180],
+                    "description": "Blue pixel (1895B4)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "close_menu",
+                    "type": "key",
+                    "key": "escape",
+                    "description": "Press ESC to close menu"
+                },
+                {
+                    "name": "wait_after_escape",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after pressing escape"
+                }
+            ]
+        },
+        
+        "in_game_with_hud": {
+            "name": "In Game - HUD Active",
+            "detection_pixels": [
+                {
+                    "x": 648,
+                    "y": 1055,
+                    "color": [206, 208, 200],
+                    "description": "Beige UI pixel"
+                },
+            
+                {
+                    "x": 34,
+                    "y": 51,
+                    "color": [188, 255, 255],
+                    "description": "HUD active (BCFFFF)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "open_logs",
+                    "type": "key",
+                    "key": "l",
+                    "description": "Press L to open logs"
+                },
+                {
+                    "name": "wait_after_logs",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after opening logs"
+                }
+            ]
+        },
+        
+        "in_game_no_hud": {
+            "name": "In Game - No HUD",
+            "detection_pixels": [
+                {
+                    "x": 648,
+                    "y": 1055,
+                    "color": [206, 208, 200],
+                    "description": "Beige UI pixel"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "toggle_hud",
+                    "type": "key",
+                    "key": "h",
+                    "description": "Press H to toggle HUD"
+                },
+                {
+                    "name": "wait_after_hud",
+                    "type": "wait",
+                    "duration": 1,
+                    "description": "Wait after HUD toggle"
+                }
+            ]
+        },
+        
+        "log_screen_online_players_not_selected": {
+            "name": "Log Screen - Online Players Not Selected",
+            "detection_pixels": [
+                {
+                    "x": 902,
+                    "y": 87,
+                    "color": [255, 255, 255],
+                    "description": "White pixel"
+                },
+                {
+                    "x": 203,
+                    "y": 134,
+                    "color": [188, 244, 255],
+                    "description": "Light blue pixel (BCF4FF)"
+                },
+                {
+                    "x": 629,
+                    "y": 137,
+                    "color": [106, 188, 202],
+                    "description": "Blue-gray pixel (478190)"
+                },
+                {
+                    "x": 628,
+                    "y": 215,
+                    "color": [0, 140, 171],
+                    "description": "Blue pixel (008CAB)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_online_players",
+                    "type": "click",
+                    "x": 629,
+                    "y": 215,
+                    "clicks": 1,
+                    "description": "Click Online Players tab"
+                },
+                {
+                    "name": "wait_after_click",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Wait after clicking"
+                }
+            ]
+        },
+        
+        "log_screen_online_players_selected": {
+            "name": "Log Screen - Online Players Selected",
+            "detection_pixels": [
+                {
+                    "x": 902,
+                    "y": 87,
+                    "color": [255, 255, 255],
+                    "description": "White pixel"
+                },
+                {
+                    "x": 203,
+                    "y": 134,
+                    "color": [188, 244, 255],
+                    "description": "Light blue pixel (BCF4FF)"
+                },
+                {
+                    "x": 629,
+                    "y": 137,
+                    "color": [106, 188, 202],
+                    "description": "Blue-gray pixel (478190)"
+                },
+                {
+                    "x": 626,
+                    "y": 215,
+                    "color": [128, 231, 255],
+                    "description": "Light blue pixel (80E7FF)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "log_screen_ready",
+                    "type": "wait",
+                    "duration": 0.5,
+                    "description": "Log screen with Online Players selected"
+                }
+            ]
+        }
+    },
+    
+    "error_states": {}
+}
