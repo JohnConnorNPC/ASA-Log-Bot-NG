@@ -130,7 +130,38 @@
                 }
             ]
         },
-        
+"join_game_screen_bobs_tails": {
+    "name": "Join Game Screen (Bob's Tails)",
+    "detection_pixels": [
+        {
+            "x": 639,
+            "y": 755,
+            "color": [125, 255, 247],
+            "description": "Cyan pixel (7DFFF7)"
+        },
+        {
+            "x": 1586,
+            "y": 760,
+            "color": [125, 255, 247],
+            "description": "Cyan pixel (7DFFF7)"
+        }
+    ],
+    "actions": [
+        {
+            "name": "click_bobs_tails",
+            "type": "click",
+            "x": 650,
+            "y": 729,
+            "description": "Click at 481,729"
+        },
+        {
+            "name": "wait_after_click",
+            "type": "wait",
+            "duration": 0.5,
+            "description": "Wait after click"
+        }
+    ]
+},        
         "multiplayer_server": {
             "name": "Multiplayer Server Screen",
             "detection_pixels": [
