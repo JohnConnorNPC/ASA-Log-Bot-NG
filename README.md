@@ -3,6 +3,9 @@
 Discord Support: https://discord.com/invite/QjtT94TsBE
 ![image](https://github.com/user-attachments/assets/ed4f7545-d0ce-4b8e-94aa-304d6877d83c)
 
+Discord Webhook:
+![image](https://github.com/user-attachments/assets/93d76370-f519-4b06-bdc9-9f77d9dfd132)
+
 ## Prerequisites
 1. **Python 3.8 or higher**
    - Download from: https://www.python.org/downloads/
