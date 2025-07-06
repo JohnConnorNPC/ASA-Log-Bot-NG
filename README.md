@@ -46,8 +46,8 @@ ASA-Log-Bot-NG automates the following tasks:
 - Launches ARK: Survival Ascended
 - Navigates through the game menus
 - Joins your configured game server
-- Spawns your character in
-- Uses a bed to respawn at your base
+- Spawns your character in using configured bed
+- Sets its self up and starts logging
 - Posts Tribe Logs to discord webhook
 - Posts Online Members to discord webhook
 
