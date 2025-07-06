@@ -48,6 +48,8 @@ ASA-Log-Bot-NG automates the following tasks:
 - Joins your configured game server
 - Spawns your character in
 - Uses a bed to respawn at your base
+- Posts Tribe Logs to discord webhook
+- Posts Online Members to discord webhook
 
 ## Required ARK Settings
 Before running the bot, you must configure ARK with these specific settings:
