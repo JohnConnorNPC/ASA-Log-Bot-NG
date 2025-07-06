@@ -44,8 +44,6 @@ class MemberProcessor:
         self.member_counts = {}  # Track how many times each member is seen
         self.last_scroll_direction = "down"
         self.online_member_count = 0  # Track the actual count from OCR
-        self.member_last_seen = {}  # Track last seen time for each member
-        self.offline_timeout = 120  # 2 minutes timeout for marking as offline
         
         # OCR configs
         self.count_ocr_config = '--psm 7 -c "tessedit_char_whitelist= 0123456789/"'
@@ -211,12 +209,7 @@ class MemberProcessor:
     
     def update_member_tracking(self, names):
         """Update member tracking with new names"""
-        current_time = time.time()
-        
         for name in names:
-            # Update last seen time
-            self.member_last_seen[name] = current_time
-            
             if name in self.member_counts:
                 # Increment by 1.5 to reach threshold faster when seen
                 # This compensates for the slower decrement
@@ -268,26 +261,26 @@ class MemberProcessor:
         
         try:
             with sqlite3.connect(self.member_db_path) as conn:
-                # First, mark all members as offline who haven't been seen recently
+                # Mark members as offline based on last_seen time in database
                 current_time = time.time()
-                offline_members = []
                 
-                for member in list(self.member_set):
-                    last_seen = self.member_last_seen.get(member, 0)
-                    if current_time - last_seen > self.offline_timeout:
-                        offline_members.append(member)
-                        self.member_set.remove(member)
-                        if member in self.member_counts:
-                            del self.member_counts[member]
-                        if member in self.member_last_seen:
-                            del self.member_last_seen[member]
-                        print(f"Member went offline (not seen for {int(current_time - last_seen)}s): {member}")
+                # Update members who haven't been seen recently to offline
+                conn.execute('''
+                    UPDATE members 
+                    SET is_online = 0 
+                    WHERE is_online = 1 
+                    AND last_seen < datetime('now', '-2 minutes')
+                ''')
                 
-                # Update database for offline members
-                for member in offline_members:
-                    conn.execute('''
-                        UPDATE members SET is_online = 0 WHERE name = ?
-                    ''', (member,))
+                # Get list of members who just went offline for logging
+                cursor = conn.execute('''
+                    SELECT name FROM members 
+                    WHERE is_online = 0 
+                    AND last_seen >= datetime('now', '-3 minutes')
+                    AND last_seen < datetime('now', '-2 minutes')
+                ''')
+                for row in cursor:
+                    print(f"Member went offline: {row[0]}")
                 
                 # Update or insert each online member
                 for member in self.member_set:

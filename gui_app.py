@@ -695,7 +695,13 @@ class ASALogBotGUI:
                 try:
                     import sqlite3
                     with sqlite3.connect(self.member_processor.member_db_path) as conn:
-                        cursor = conn.execute('SELECT name, times_seen, is_online FROM members WHERE last_seen > datetime("now", "-10 minutes") ORDER BY is_online DESC, times_seen DESC')
+                        cursor = conn.execute('''
+                            SELECT name, times_seen, 
+                                   CASE WHEN last_seen > datetime('now', '-2 minutes') THEN 1 ELSE is_online END as is_online
+                            FROM members 
+                            WHERE last_seen > datetime('now', '-10 minutes') 
+                            ORDER BY is_online DESC, times_seen DESC
+                        ''')
                         members = [{'name': row[0], 'times_seen': row[1], 'is_online': row[2]} for row in cursor]
                 except:
                     pass
