@@ -333,11 +333,19 @@ class DiscordWebhook:
                 draw.text((padding, y + 25), "??:??:??", fill=(200, 200, 200), font=font_small)
         
         # Calculate counts
-        enemy_count = max(0, total_players - online_members)
+        # Get actual member list count for more accurate enemy calculation
+        actual_member_count = len(self.get_online_members_list())
+        # Use the higher of OCR count or actual detected members
+        effective_members = max(online_members, actual_member_count)
+        enemy_count = max(0, total_players - effective_members)
         
         # Draw Members in center with number below
         members_label = "Members"
-        members_num = str(online_members)
+        # Show actual detected count if higher than OCR
+        if actual_member_count > online_members:
+            members_num = f"{actual_member_count}"
+        else:
+            members_num = str(online_members)
         
         # Get text widths for centering
         label_bbox = draw.textbbox((0, 0), members_label, font=font_small)
@@ -552,7 +560,15 @@ class DiscordWebhook:
             else:
                 status_text = "📊 Status Update\n"
             
-            status_text += f"Players: {total_players} | Members: {online_members} | Enemies: {max(0, total_players - online_members)}"
+            # Get actual member count for accurate enemy calculation
+            actual_member_count = len(self.get_online_members_list())
+            effective_members = max(online_members, actual_member_count)
+            enemy_count = max(0, total_players - effective_members)
+            
+            status_text += f"Players: {total_players} | Members: {online_members}"
+            if actual_member_count > online_members:
+                status_text += f" (detected {actual_member_count})"
+            status_text += f" | Enemies: {enemy_count}"
             
             payload = {
                 'content': status_text,
