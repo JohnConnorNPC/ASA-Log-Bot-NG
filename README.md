@@ -1,6 +1,7 @@
 # ASA-Log-Bot-NG Installation Guide
 ### by jc0839
 Discord Support: https://discord.com/invite/QjtT94TsBE
+![image](https://github.com/user-attachments/assets/ed4f7545-d0ce-4b8e-94aa-304d6877d83c)
 
 ## Prerequisites
 1. **Python 3.8 or higher**
