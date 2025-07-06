@@ -1,10 +1,6 @@
 # ASA-Log-Bot-NG Installation Guide
 ### by jc0839
 Discord Support: https://discord.com/invite/QjtT94TsBE
-![image](https://github.com/user-attachments/assets/ed4f7545-d0ce-4b8e-94aa-304d6877d83c)
-
-Discord Webhook:
-![image](https://github.com/user-attachments/assets/93d76370-f519-4b06-bdc9-9f77d9dfd132)
 
 ## Prerequisites
 1. **Python 3.8 or higher**
@@ -45,15 +41,42 @@ Discord Webhook:
    - Check pip: `pip --version`
    - Check Tesseract: `tesseract --version`
 
+## What It Does
+ASA-Log-Bot-NG automates the following tasks:
+- Launches ARK: Survival Ascended
+- Navigates through the game menus
+- Joins your configured game server
+- Spawns your character in
+- Uses a bed to respawn at your base
+
+## Required ARK Settings
+Before running the bot, you must configure ARK with these specific settings:
+
+### Video Settings
+- **Resolution**: 1920x1080
+- **Graphics Quality**: Low settings
+- Reset to default settings first, then apply these changes
+
+### General/UI Settings
+- **Hide Floating Player Names**: ON
+- **Structure Tooltip Settings**: OFF
+- **Item Notification Settings**: Minimal
+- **Floating Names**: OFF
+
+### General/Camera Settings
+- **Player Camera Mode**: OFF
+- **Camera Shake Scale**: 0
+- **Camera View Bob**: OFF
+- **All Tooltip and Notification Settings**: OFF
+- **Toggle Extended HUD Info**: ON *(IMPORTANT - This must be enabled)*
+
+### Advanced Settings
+- **Bandwidth**: Low
+- **Force Show Item Names**: OFF
+- **UI Vibration**: OFF
+
 ## Running the Application
 Simply double-click `run.cmd` or execute it from the command line:
 ```
 run.cmd
 ```
-
-## Troubleshooting
-- **Python not found**: Make sure Python is added to your PATH environment variable
-- **Tesseract not found**: Restart your command prompt after installing Tesseract
-- **Module not found errors**: Run `install_requirements.cmd` again
-- **Permission errors**: Run command prompt as Administrator
-- **Config file errors**: Ensure `config.json` is properly formatted JSON and all required fields are filled
