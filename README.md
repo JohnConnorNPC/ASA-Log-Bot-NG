@@ -19,7 +19,7 @@ Discord Support: https://discord.com/invite/QjtT94TsBE
    cd ASA-Log-Bot-NG
    ```
 
-2. **Install Python dependencies**
+2. **Install dependencies**
    - Run the provided script:
      ```
      install_requirements.cmd
@@ -28,6 +28,11 @@ Discord Support: https://discord.com/invite/QjtT94TsBE
      ```
      pip install -r requirements.txt
      ```
+
+- Install nodejs from nodejs.org and run
+  ```
+  npm install -g gamedig
+  ```
 
 3. **Configure the application**
    - Copy `config.example.json` to `config.json`:
@@ -64,13 +69,14 @@ Before running the bot, you must configure ARK with these specific settings:
 - **Structure Tooltip Settings**: OFF
 - **Item Notification Settings**: Minimal
 - **Floating Names**: OFF
+- **Toggle Extended HUD Info**: ON *(IMPORTANT - This must be enabled)*
 
 ### General/Camera Settings
 - **Player Camera Mode**: OFF
 - **Camera Shake Scale**: 0
 - **Camera View Bob**: OFF
 - **All Tooltip and Notification Settings**: OFF
-- **Toggle Extended HUD Info**: ON *(IMPORTANT - This must be enabled)*
+
 
 ### Advanced Settings
 - **Bandwidth**: Low
