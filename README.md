@@ -41,10 +41,26 @@ Discord Support: https://discord.com/invite/QjtT94TsBE
      ```
    - Open `config.json` in a text editor and adjust the values in the first section according to your needs
 
-4. **Verify installation**
-   - Check Python: `python --version`
-   - Check pip: `pip --version`
-   - Check Tesseract: `tesseract --version`
+
+
+
+Installing npm on Windows and GameDig prereq (to get total players)
+
+Download Node.js installer
+
+Visit nodejs.org
+Download the Windows Installer (.msi) for the LTS version
+npm is included with Node.js
+
+Run the installer
+
+Double-click the downloaded .msi file
+Follow the installation wizard
+Keep default settings (npm will be installed automatically)
+
+Install GameDig
+Once npm is installed, install GameDig globally:
+npm install -g gamedig
 
 ## What It Does
 ASA-Log-Bot-NG automates the following tasks:
