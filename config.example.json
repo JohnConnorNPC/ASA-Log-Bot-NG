@@ -11,8 +11,8 @@
     "log_db": "./log.db",
     "log_images_db": "./log_images.db",
     "member_db": "./member.db",
-    "log_webhook": "https://discord.com/api/webhooks/big_number/biger_random_string",
-    "members_webhook": "https://discord.com/api/webhooks/big_number/biger_random_string",
+    "log_webhook": "YOUR_LOG_WEBHOOK_URL_HERE",
+    "members_webhook": "YOUR_MEMBERS_WEBHOOK_URL_HERE",
     "server_ip": "5.62.112.77",
     "server_port": 7781,
     "discord_enabled": true,
@@ -20,6 +20,76 @@
     "replacements_file": "replacements.json",
     
     "states": {
+
+        "host_connection_timeout": {
+            "name": "Host Connection Timeout",
+            "detection_pixels": [
+                {
+                    "x": 881,
+                    "y": 366,
+                    "color": [188, 238, 249],
+                    "description": "Light blue pixel (BCEEF9)"
+                },
+                {
+                    "x": 1088,
+                    "y": 369,
+                    "color": [191, 243, 255],
+                    "description": "Light blue pixel (BFF3FF)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_ok",
+                    "type": "click",
+                    "x": 910,
+                    "y": 721,
+                    "clicks": 1,
+                    "description": "Click OK button"
+                },
+                {
+                    "name": "wait_after_ok",
+                    "type": "wait",
+                    "duration": 1.0,
+                    "description": "Wait after clicking OK"
+                }
+            ]
+        },
+
+
+        "connection_failed": {
+            "name": "Connection Failed",
+            "detection_pixels": [
+                {
+                    "x": 886,
+                    "y": 368,
+                    "color": [188, 238, 249],
+                    "description": "Light blue pixel (BCEEF9)"
+                },
+                {
+                    "x": 1087,
+                    "y": 364,
+                    "color": [191, 243, 255],
+                    "description": "Light blue pixel (BFF3FF)"
+                }
+            ],
+            "actions": [
+                {
+                    "name": "click_ok",
+                    "type": "click",
+                    "x": 959,
+                    "y": 727,
+                    "clicks": 1,
+                    "description": "Click OK button"
+                },
+                {
+                    "name": "wait_after_ok",
+                    "type": "wait",
+                    "duration": 1.0,
+                    "description": "Wait after clicking OK"
+                }
+            ]
+        },
+        
         "main_menu": {
             "name": "Main Menu",
             "detection_pixels": [
@@ -130,38 +200,7 @@
                 }
             ]
         },
-"join_game_screen_bobs_tails": {
-    "name": "Join Game Screen (Bob's Tails)",
-    "detection_pixels": [
-        {
-            "x": 639,
-            "y": 755,
-            "color": [125, 255, 247],
-            "description": "Cyan pixel (7DFFF7)"
-        },
-        {
-            "x": 1586,
-            "y": 760,
-            "color": [125, 255, 247],
-            "description": "Cyan pixel (7DFFF7)"
-        }
-    ],
-    "actions": [
-        {
-            "name": "click_bobs_tails",
-            "type": "click",
-            "x": 650,
-            "y": 729,
-            "description": "Click at 481,729"
-        },
-        {
-            "name": "wait_after_click",
-            "type": "wait",
-            "duration": 0.5,
-            "description": "Wait after click"
-        }
-    ]
-},        
+        
         "multiplayer_server": {
             "name": "Multiplayer Server Screen",
             "detection_pixels": [
@@ -408,14 +447,6 @@
                     "duration": 0.5,
                     "description": "Wait after typing"
                 },
-				{
-                    "name": "click_selected_bed",
-                    "type": "click",
-                    "x": 383,
-                    "y": 223,
-                    "clicks": 1,
-                    "description": "Click selected bed"
-                },				
                 {
                     "name": "wait_after_type",
                     "type": "wait",
@@ -473,40 +504,6 @@
             ]
         },
         
-        "host_connection_timeout": {
-            "name": "Host Connection Timeout",
-            "detection_pixels": [
-                {
-                    "x": 836,
-                    "y": 361,
-                    "color": [188, 238, 249],
-                    "description": "Light blue pixel (BCEEF9)"
-                },
-                {
-                    "x": 1012,
-                    "y": 417,
-                    "color": [191, 243, 255],
-                    "description": "Light blue pixel (BFF3FF)"
-                }
-            ],
-            "actions": [
-                {
-                    "name": "click_ok",
-                    "type": "click",
-                    "x": 959,
-                    "y": 727,
-                    "clicks": 1,
-                    "description": "Click OK button"
-                },
-                {
-                    "name": "wait_after_ok",
-                    "type": "wait",
-                    "duration": 1.0,
-                    "description": "Wait after clicking OK"
-                }
-            ]
-        },
-        
         "escape_pressed_in_game": {
             "name": "Escape Pressed In Game",
             "detection_pixels": [
@@ -548,7 +545,6 @@
                     "color": [206, 208, 200],
                     "description": "Beige UI pixel"
                 },
-            
                 {
                     "x": 34,
                     "y": 51,
