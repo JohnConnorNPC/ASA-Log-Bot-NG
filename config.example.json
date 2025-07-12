@@ -21,40 +21,45 @@
     
     "states": {
 
-        "host_connection_timeout": {
-            "name": "Host Connection Timeout",
-            "detection_pixels": [
-                {
-                    "x": 881,
-                    "y": 366,
-                    "color": [188, 238, 249],
-                    "description": "Light blue pixel (BCEEF9)"
-                },
-                {
-                    "x": 1088,
-                    "y": 369,
-                    "color": [191, 243, 255],
-                    "description": "Light blue pixel (BFF3FF)"
-                }
-            ],
-            "actions": [
-                {
-                    "name": "click_ok",
-                    "type": "click",
-                    "x": 910,
-                    "y": 721,
-                    "clicks": 1,
-                    "description": "Click OK button"
-                },
-                {
-                    "name": "wait_after_ok",
-                    "type": "wait",
-                    "duration": 1.0,
-                    "description": "Wait after clicking OK"
-                }
-            ]
+      "host_connection_timeout": {
+    "name": "Host Connection Timeout",
+    "detection_pixels": [
+        {
+            "x": 838,
+            "y": 363,
+            "color": [203, 241, 255],
+            "description": "Light blue pixel (CBF1FF)"
         },
-
+        {
+            "x": 1032,
+            "y": 356,
+            "color": [195, 243, 255],
+            "description": "Light blue pixel (C3F3FF)"
+        },
+        {
+            "x": 906,
+            "y": 418,
+            "color": [198, 241, 255],
+            "description": "Light blue pixel (C6F1FF)"
+        }
+    ],
+    "actions": [
+        {
+            "name": "click_ok",
+            "type": "click",
+            "x": 840,
+            "y": 730,
+            "clicks": 1,
+            "description": "Click OK button"
+        },
+        {
+            "name": "wait_after_ok",
+            "type": "wait",
+            "duration": 1.0,
+            "description": "Wait after clicking OK"
+        }
+    ]
+},
 
         "connection_failed": {
             "name": "Connection Failed",
